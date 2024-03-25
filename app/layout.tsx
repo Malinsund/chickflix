@@ -17,11 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="h-full">
+      <body className="bg-black m-0 h-full flex flex-col">
         <Header />
 
-        <main className="bg-black">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -1,3 +1,7 @@
+"use client";
+
+import Bookmark from "@/app/UI/bookmark";
+import movies from "../../../movies.json";
 import Image from "next/image";
 import movies from "../../../movies.json";
 
@@ -45,6 +49,8 @@ export default function MoviePage({ params }: PageProps) {
         height={100}
         width={90}
       ></Image>
+
+      <Bookmark movieTitle={selectedMovie.title} />
     </div>
   );
 }

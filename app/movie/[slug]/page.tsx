@@ -1,5 +1,5 @@
-import movies from "../../../movies.json";
 import Image from "next/image";
+import movies from "../../../movies.json";
 
 type Movie = {
   title: string;
@@ -13,9 +13,10 @@ type Movie = {
 
 //gör slug till title
 function slugToTitle(slug: string): string {
-
   //gör om %20 (mellanslag) till nada
-  return decodeURIComponent(slug).replace(/\b\w/g, char => char.toUpperCase());
+  return decodeURIComponent(slug).replace(/\b\w/g, (char) =>
+    char.toUpperCase()
+  );
 }
 
 type PageProps = { params: { slug: string } };
@@ -24,7 +25,7 @@ export default function MoviePage({ params }: PageProps) {
   const slug = params.slug;
   const titleFromSlug = slugToTitle(slug);
   const selectedMovie = movies.find(
-    (movie: Movie) => (movie.title) === titleFromSlug
+    (movie: Movie) => movie.title === titleFromSlug
   );
 
   if (!selectedMovie) {

@@ -1,23 +1,43 @@
 "use client";
 
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import movies from "../movies.json";
-import Bookmark from "./UI/bookmark";
 import RecommendedMovies from "./UI/Recommended";
+import Bookmark from "./UI/bookmark";
 import SearchBar from "./UI/searchbar";
 
 export default function Home() {
+  const [currentSlide, setSlide] = useState(0);
+
   const filteredMovies = movies.filter((movie) => movie.isTrending === true);
+  const length = filteredMovies.length;
+  const next = () => {
+    setSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+  };
+  const previous = () => {
+    setSlide(currentSlide === 0 ? length - 1 : currentSlide - 1);
+  };
   return (
     <div>
       <div>
         <SearchBar />
       </div>
-      {filteredMovies.map((movie) => (
+      <ChevronDoubleLeftIcon
+        onClick={previous}
+        className="cursor-pointer h-14 w-14 text-white"
+      ></ChevronDoubleLeftIcon>
+      {filteredMovies.map((movie, index) => (
         <Link href={`/movie/${movie.title}`} key={movie.title}>
           <div
-            className="bg-white bg-opacity-50 m-5 flex flex-col"
+            className={`${
+              index === currentSlide ? "block" : "hidden"
+            } mx-2 flex flex-col justify-center bg-white bg-opacity-50 m-5] `}
             key={movie.title}
           >
             <h3 className="text-center p-3">{movie.title}</h3>
@@ -45,6 +65,10 @@ export default function Home() {
           </div>
         </Link>
       ))}
+      <ChevronDoubleRightIcon
+        onClick={next}
+        className="cursor-pointer h-14 w-14 text-white"
+      ></ChevronDoubleRightIcon>
       <RecommendedMovies />
     </div>
   );

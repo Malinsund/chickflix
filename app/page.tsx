@@ -65,11 +65,11 @@ export default function Home() {
       <div className="flex flex-row justify-between">
         <ChevronDoubleLeftIcon
           onClick={previous}
-          className="cursor-pointer h-14 w-14 text-white"
+          className="cursor-pointer h-14 w-14 text-white  hover:text-blue-400"
         ></ChevronDoubleLeftIcon>
         <ChevronDoubleRightIcon
           onClick={next}
-          className="cursor-pointer h-14 w-14 text-white"
+          className="cursor-pointer h-14 w-14 text-white hover:text-blue-400"
         ></ChevronDoubleRightIcon>
       </div>
       <RecommendedMovies />

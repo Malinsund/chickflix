@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "./UI/footer";
 import Header from "./UI/header";
-import SearchBar from "./UI/searchbar";
 import "./global.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +20,6 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className="bg-black m-0 h-full flex flex-col">
         <Header />
-        <SearchBar />
 
         <main className="flex-1">{children}</main>
         <Footer />

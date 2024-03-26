@@ -7,13 +7,18 @@ import movies from "../movies.json";
 import SearchBar from "./UI/Searchbar";
 import RecommendedMovies from "./UI/Recommended";
 
+// Function to convert a movie title to a slug (e.g., "The Great Escape" -> "the-great-escape")
+
+// Function to convert a movie title to a slug (e.g., "The Great Escape" -> "the-great-escape")
+
 export default function Home() {
+  const filteredMovies = movies.filter((movie) => movie.isTrending === true);
   return (
     <div>
       <div>
         <SearchBar />
       </div>
-      {movies.map((movie) => (
+      {filteredMovies.map((movie) => (
         <Link href={`/movie/${movie.title}`} key={movie.title}>
           <div
             className="bg-white bg-opacity-50 m-5 flex flex-col"

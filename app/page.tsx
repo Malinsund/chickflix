@@ -4,6 +4,8 @@ import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import movies from "../movies.json";
 
+// Function to convert a movie title to a slug (e.g., "The Great Escape" -> "the-great-escape")
+
 export default function Home() {
   return (
     <div>

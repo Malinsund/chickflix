@@ -3,6 +3,7 @@
 import Bookmark from "@/app/UI/bookmark";
 import movies from "../../../movies.json";
 import Image from "next/image";
+import movies from "../../../movies.json";
 
 type Movie = {
   title: string;

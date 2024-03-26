@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import movies from "../../movies.json";
+import Bookmark from "../UI/bookmark";
 
 type Movie = {
   title: string;
@@ -44,11 +45,12 @@ export default function Bookmarked() {
                 height={100}
                 layout="fixed"
               />
+              <Bookmark movieTitle={movie.title} />
             </div>
           </React.Fragment>
         ))
       ) : (
-        <p className="text-white">Du har inga bokmärkta filmer</p>
+        <p className="text-white">You have no bookmarked movies</p>
       )}
     </div>
   );

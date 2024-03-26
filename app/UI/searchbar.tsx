@@ -21,10 +21,10 @@ export default function SearchBar() {
   const searchRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value;
+    const term = e.target.value.toLowerCase();
     setSearchTerm(term);
     const results = movies.filter((movie: Movie) =>
-      movie.title.toLowerCase().includes(term.toLowerCase())
+      movie.title.toLowerCase().startsWith(term)
     );
     setSearchResults(results);
     setShowResults(true);
@@ -53,7 +53,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div ref={searchRef} className="m-auto">
+    <div ref={searchRef}>
       <input
         className="rounded-3xl p-2 mr-5 w-96 my-5 text-white bg-white bg-opacity-50"
         type="search"

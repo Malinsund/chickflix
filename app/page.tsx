@@ -3,15 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import movies from "../movies.json";
-import Bookmark from "./UI/bookmark";
 import RecommendedMovies from "./UI/Recommended";
+import Bookmark from "./UI/bookmark";
 import SearchBar from "./UI/searchbar";
 
 export default function Home() {
   const filteredMovies = movies.filter((movie) => movie.isTrending === true);
   return (
     <div>
-      <div>
+      <div className="flex justify-center">
         <SearchBar />
       </div>
       {filteredMovies.map((movie) => (

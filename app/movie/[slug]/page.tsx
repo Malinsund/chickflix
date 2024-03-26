@@ -1,3 +1,6 @@
+"use client";
+
+import Bookmark from "@/app/UI/bookmark";
 import movies from "../../../movies.json";
 import Image from "next/image";
 
@@ -13,9 +16,10 @@ type Movie = {
 
 //gör slug till title
 function slugToTitle(slug: string): string {
-
   //gör om %20 (mellanslag) till nada
-  return decodeURIComponent(slug).replace(/\b\w/g, char => char.toUpperCase());
+  return decodeURIComponent(slug).replace(/\b\w/g, (char) =>
+    char.toUpperCase()
+  );
 }
 
 type PageProps = { params: { slug: string } };
@@ -24,7 +28,7 @@ export default function MoviePage({ params }: PageProps) {
   const slug = params.slug;
   const titleFromSlug = slugToTitle(slug);
   const selectedMovie = movies.find(
-    (movie: Movie) => (movie.title) === titleFromSlug
+    (movie: Movie) => movie.title === titleFromSlug
   );
 
   if (!selectedMovie) {
@@ -44,6 +48,8 @@ export default function MoviePage({ params }: PageProps) {
         height={100}
         width={90}
       ></Image>
+
+      <Bookmark movieTitle={selectedMovie.title} />
     </div>
   );
 }

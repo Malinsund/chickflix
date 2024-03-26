@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import movies from "../movies.json";
 import SearchBar from "./UI/searchbar";
+import Bookmark from "./UI/bookmark";
 
 export default function Home() {
   return (
@@ -36,7 +37,7 @@ export default function Home() {
               <div className="flex flex-row">
                 <p>{movie.rating}</p>
                 <p>
-                  <BookmarkIcon className="text-white h-7 w-7" />
+                  <Bookmark movieTitle={movie.title} />
                 </p>
               </div>
             </div>

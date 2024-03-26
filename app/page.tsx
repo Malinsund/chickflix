@@ -18,7 +18,12 @@ export default function Home() {
             height={100}
             width={100}
             alt={movie.title}
-            style={{ height: "100%", width: "auto", paddingRight: "20px", paddingLeft: "20px"}}
+            style={{
+              height: "100%",
+              width: "auto",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+            }}
           ></Image>
           <div className="flex flex-row justify-between p-5">
             <p>{movie.year}</p>

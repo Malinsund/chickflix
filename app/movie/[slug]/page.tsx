@@ -40,16 +40,31 @@ export default function MoviePage({ params }: PageProps) {
     );
   }
   return (
-    <div>
-      <h1 className="text-white">{selectedMovie.title}</h1>
+    <div className="bg-white bg-opacity-50 m-5 flex flex-col px-2 rounded-md">
+      <h1 className="text-white text-center py-2 font-serif">{selectedMovie.title}</h1>
       <Image
         src={selectedMovie.thumbnail}
         alt={`Thumbnail for ${selectedMovie.title}`}
         height={100}
         width={90}
+        style={{
+          height: "100%",
+          width: "auto",
+        }}
       ></Image>
-
-      <Bookmark movieTitle={selectedMovie.title} />
+      <div className="flex flex-col p-2">
+        <div className="flex flex-row justify-between">
+          <p>{selectedMovie.year}</p>
+          <div className="flex flex-row">
+            <p>{selectedMovie.rating}</p>
+            <Bookmark movieTitle={selectedMovie.title} />
+          </div>
+        </div>
+        <hr className="bg-[#282525] my-3"/>
+        <p>{selectedMovie.synopsis}</p>
+        <p>Genre: {selectedMovie.genre}</p>
+        <p>Starring: {selectedMovie.actors.join(", ")}</p>
+      </div>
     </div>
   );
 }

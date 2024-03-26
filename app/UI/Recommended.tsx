@@ -26,13 +26,19 @@ export default function RecommendedMovies() {
   useEffect(() => {
     //filtrerar ut filmer som inte är "trending"
     const notTrendingMovies = movies.filter((movie) => !movie.isTrending);
-    //tom array för att hålla de slumpade filmerna
-    const randomMovies = [];
+    //tom array av typen Movie[] för att hålla de slumpade filmerna
+    const randomMovies: Movie[] = [];
 
     //slumpar fram 5 filmer och pushar in i arrayen randomMovies
     while (randomMovies.length < 5) {
+        //slumpar fram ett indexvärde
       const randomIndex = Math.floor(Math.random() * notTrendingMovies.length);
-      randomMovies.push(notTrendingMovies[randomIndex]);
+      //hämtar en slumpad film från arrayen med hjälp av randomIndex-värdet
+      const randomMovie = notTrendingMovies[randomIndex];
+      //kollar så att samma film inte kan pushas in och visas flera gånger
+      if (!randomMovies.some((movie) => movie.title === randomMovie.title)) {
+      randomMovies.push(randomMovie);
+      }
     }
     //uppdaterar state med de slumpade filmerna
     setRecommendedMovies(randomMovies);

@@ -4,10 +4,14 @@ import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import movies from "../movies.json";
+import SearchBar from "./UI/searchbar";
 
 export default function Home() {
   return (
     <div>
+      <div>
+        <SearchBar />
+      </div>
       {movies.map((movie) => (
         <Link href={`/movie/${movie.title}`} key={movie.title}>
           <div

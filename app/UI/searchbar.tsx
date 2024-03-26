@@ -1,12 +1,16 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import movies from "/movies.json";
+import movies from "../../movies.json";
 
 interface Movie {
   title: string;
-  actor: string;
+  year: number;
+  rating: string;
+  actors: string[];
   genre: string;
+  synopsis: string;
+  thumbnail: string;
 }
 
 export default function SearchBar() {

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import movies from "../movies.json";
 import SearchBar from "./UI/Searchbar";
+import RecommendedMovies from "./UI/Recommended";
 
 export default function Home() {
   return (
@@ -43,6 +44,7 @@ export default function Home() {
           </div>
         </Link>
       ))}
+      <RecommendedMovies />
     </div>
   );
 }

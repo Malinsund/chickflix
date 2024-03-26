@@ -6,6 +6,8 @@ import Link from "next/link";
 import movies from "../movies.json";
 import SearchBar from "./UI/searchbar";
 
+// Function to convert a movie title to a slug (e.g., "The Great Escape" -> "the-great-escape")
+
 export default function Home() {
   return (
     <div>

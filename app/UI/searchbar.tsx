@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import movies from "/movies.json";
@@ -48,16 +49,16 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div ref={searchRef}>
+    <div ref={searchRef} className="m-auto">
       <input
-        className="rounded-lg border md:p-2 mr-5 md:w-80 text-black"
+        className="rounded-lg md:p-2 mr-5 w-96 my-5 text-white bg-white bg-opacity-50"
         type="search"
         placeholder="Search movie.."
         value={searchTerm}
         onChange={handleSearch}
       />
       {showResults && searchResults.length > 0 && (
-        <div className="absolute bg-white text-black shadow-md rounded-lg mt-1 p-2 w-full ">
+        <div className="absolute bg-white text-black shadow-md rounded-lg mt-1 p-2">
           {searchResults.map((movie) => (
             <Link
               key={movie.title}

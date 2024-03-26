@@ -3,10 +3,14 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import movies from "../movies.json";
+import SearchBar from "./UI/searchbar";
 
 export default function Home() {
   return (
     <div>
+      <div>
+        <SearchBar />
+      </div>
       {movies.map((movie) => (
         <div
           className="bg-white bg-opacity-50 m-5 flex flex-col"
@@ -18,7 +22,12 @@ export default function Home() {
             height={100}
             width={100}
             alt={movie.title}
-            style={{ height: "100%", width: "auto", paddingRight: "20px", paddingLeft: "20px"}}
+            style={{
+              height: "100%",
+              width: "auto",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+            }}
           ></Image>
           <div className="flex flex-row justify-between p-5">
             <p>{movie.year}</p>

@@ -17,7 +17,8 @@ const Bookmark: React.FC<BookmarkProps> = ({ movieTitle }) => {
     setIsBookmarked(bookmarkedMovies.includes(movieTitle));
   }, [movieTitle]);
 
-  const toggleBookmark = () => {
+  const toggleBookmark = (e: React.MouseEvent) => {
+    e.preventDefault();
     let bookmarkedMovies = JSON.parse(
       localStorage.getItem("bookmarks") || "[]"
     );

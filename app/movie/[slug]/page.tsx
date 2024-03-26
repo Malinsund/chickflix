@@ -17,9 +17,7 @@ type Movie = {
 //gör slug till title
 function slugToTitle(slug: string): string {
   //gör om %20 (mellanslag) till nada
-  return decodeURIComponent(slug).replace(/\b\w/g, (char) =>
-    char.toUpperCase()
-  );
+  return decodeURIComponent(slug)
 }
 
 type PageProps = { params: { slug: string } };

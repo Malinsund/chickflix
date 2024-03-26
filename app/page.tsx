@@ -28,10 +28,7 @@ export default function Home() {
       <div>
         <SearchBar />
       </div>
-      <ChevronDoubleLeftIcon
-        onClick={previous}
-        className="cursor-pointer h-14 w-14 text-white"
-      ></ChevronDoubleLeftIcon>
+
       {filteredMovies.map((movie, index) => (
         <Link href={`/movie/${movie.title}`} key={movie.title}>
           <div
@@ -65,10 +62,16 @@ export default function Home() {
           </div>
         </Link>
       ))}
-      <ChevronDoubleRightIcon
-        onClick={next}
-        className="cursor-pointer h-14 w-14 text-white"
-      ></ChevronDoubleRightIcon>
+      <div className="flex flex-row justify-between">
+        <ChevronDoubleLeftIcon
+          onClick={previous}
+          className="cursor-pointer h-14 w-14 text-white"
+        ></ChevronDoubleLeftIcon>
+        <ChevronDoubleRightIcon
+          onClick={next}
+          className="cursor-pointer h-14 w-14 text-white"
+        ></ChevronDoubleRightIcon>
+      </div>
       <RecommendedMovies />
     </div>
   );

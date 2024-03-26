@@ -51,7 +51,7 @@ export default function SearchBar() {
   return (
     <div ref={searchRef} className="m-auto">
       <input
-        className="rounded-lg md:p-2 mr-5 w-96 my-5 text-white bg-white bg-opacity-50"
+        className="rounded-3xl p-2 mr-5 w-96 my-5 text-white bg-white bg-opacity-50"
         type="search"
         placeholder="Search movie.."
         value={searchTerm}

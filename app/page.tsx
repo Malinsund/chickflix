@@ -31,11 +31,12 @@ export default function Home() {
       <div className="flex justify-center">
         <SearchBar />
       </div>
-      <h1 className="text-white text-center">Trending right now</h1>
-    
+      <h1 className="text-center text-white">Trending right now</h1>
+
       <Link href={`/movie/${currentMovie.title}`} key={currentMovie.title}>
+        {/* eslint-disable-next-line tailwindcss/migration-from-tailwind-2 */}
         <div className="mx-5 flex flex-col justify-center bg-white bg-opacity-50">
-          <h3 className="text-center p-3">{currentMovie.title}</h3>
+          <h3 className="p-3 text-center">{currentMovie.title}</h3>
           <Image
             src={currentMovie.thumbnail}
             height={100}
@@ -59,15 +60,15 @@ export default function Home() {
           </div>
         </div>
       </Link>
-     
+
       <div className="flex flex-row justify-between">
         <ChevronDoubleLeftIcon
           onClick={previous}
-          className="cursor-pointer h-14 w-14 text-white  hover:text-blue-400"
+          className="size-14 cursor-pointer text-white hover:text-blue-400"
         ></ChevronDoubleLeftIcon>
         <ChevronDoubleRightIcon
           onClick={next}
-          className="cursor-pointer h-14 w-14 text-white hover:text-blue-400"
+          className="size-14 cursor-pointer text-white hover:text-blue-400"
         ></ChevronDoubleRightIcon>
       </div>
       <RecommendedMovies />

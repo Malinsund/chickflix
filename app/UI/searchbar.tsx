@@ -55,14 +55,15 @@ export default function SearchBar() {
   return (
     <div ref={searchRef}>
       <input
-        className="rounded-3xl p-2 mr-5 w-96 my-5 text-white bg-white bg-opacity-50"
+        /* eslint-disable-next-line tailwindcss/migration-from-tailwind-2  */
+        className="my-5 mr-5 w-96 rounded-3xl bg-white bg-opacity-50 p-2 text-white"
         type="search"
         placeholder="Search movie.."
         value={searchTerm}
         onChange={handleSearch}
       />
       {showResults && searchResults.length > 0 && (
-        <div className="absolute bg-white text-black shadow-md rounded-lg mt-1 p-2">
+        <div className="absolute mt-1 rounded-lg bg-white p-2 text-black shadow-md">
           {searchResults.map((movie) => (
             <Link
               key={movie.title}

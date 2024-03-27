@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @keyframes roll {
-    0% {
-      transform: translateX(250%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(250%);
   }
-  
-  .rolling-text {
-    display: inline-block;
-    white-space: nowrap;
-    animation: roll 10s linear infinite;
-  }  
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.rolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: roll 10s linear infinite;
+}

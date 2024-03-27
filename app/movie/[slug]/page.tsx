@@ -17,7 +17,7 @@ type Movie = {
 //gör slug till title
 function slugToTitle(slug: string): string {
   //gör om %20 (mellanslag) till nada
-  return decodeURIComponent(slug)
+  return decodeURIComponent(slug);
 }
 
 type PageProps = { params: { slug: string } };
@@ -38,8 +38,11 @@ export default function MoviePage({ params }: PageProps) {
     );
   }
   return (
-    <div className="bg-white bg-opacity-50 m-5 flex flex-col px-2 rounded-md text-black">
-      <p className="text-center py-3 font-bold text-xl">{selectedMovie.title}</p>
+    // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+    <div className="m-5 flex flex-col rounded-md bg-white bg-opacity-50 px-2 text-black">
+      <p className="py-3 text-center text-xl font-bold">
+        {selectedMovie.title}
+      </p>
       <Image
         src={selectedMovie.thumbnail}
         alt={`Thumbnail for ${selectedMovie.title}`}
@@ -52,28 +55,39 @@ export default function MoviePage({ params }: PageProps) {
         }}
       ></Image>
       {selectedMovie.isTrending === true && (
-      <div className="bg-blue-300 overflow-hidden rounded-b-md">
-      <p className="font-bold py-1"><span className="rolling-text">Trending right now!</span></p>
-      </div>
-        )}
-      <div className="flex flex-col p-2 gap-5">
-        <div>
-        <div className="flex flex-row justify-between">
-          <p className="font-semibold flex items-center justify-center text-lg">{selectedMovie.year}</p>
-          <div className="flex flex-row">
-            {selectedMovie.rating !== "Not Rated" && (
-              <p className="bg-white h-7 w-7 rounded-full flex items-center justify-center mr-1  font-bold">{selectedMovie.rating}</p>
-            )}
-            <Bookmark movieTitle={selectedMovie.title} />
-          </div>
+        <div className="overflow-hidden rounded-b-md bg-blue-300">
+          <p className="py-1 font-bold">
+            <span className="rolling-text">Trending right now!</span>
+          </p>
         </div>
-        <hr className="bg-[#282525] my-3"/>
-        <p>{selectedMovie.synopsis}</p>
+      )}
+      <div className="flex flex-col gap-5 p-2">
+        <div>
+          <div className="flex flex-row justify-between">
+            <p className="flex items-center justify-center text-lg font-semibold">
+              {selectedMovie.year}
+            </p>
+            <div className="flex flex-row">
+              {selectedMovie.rating !== "Not Rated" && (
+                <p className="mr-1 flex size-7 items-center justify-center rounded-full bg-white  font-bold">
+                  {selectedMovie.rating}
+                </p>
+              )}
+              <Bookmark movieTitle={selectedMovie.title} />
+            </div>
+          </div>
+          <hr className="my-3 bg-[#282525]" />
+          <p>{selectedMovie.synopsis}</p>
         </div>
 
-        <div className="italic text-sm">
-        <p>Genre: <span className="font-thin">{selectedMovie.genre}</span></p>
-        <p>Starring: <span className="font-thin">{selectedMovie.actors.join(", ")}</span></p>
+        <div className="text-sm italic">
+          <p>
+            Genre: <span className="font-thin">{selectedMovie.genre}</span>
+          </p>
+          <p>
+            Starring:{" "}
+            <span className="font-thin">{selectedMovie.actors.join(", ")}</span>
+          </p>
         </div>
       </div>
     </div>

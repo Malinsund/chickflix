@@ -31,13 +31,13 @@ export default function RecommendedMovies() {
 
     //slumpar fram 5 filmer och pushar in i arrayen randomMovies
     while (randomMovies.length < 5) {
-        //slumpar fram ett indexvärde
+      //slumpar fram ett indexvärde
       const randomIndex = Math.floor(Math.random() * notTrendingMovies.length);
       //hämtar en slumpad film från arrayen med hjälp av randomIndex-värdet
       const randomMovie = notTrendingMovies[randomIndex];
       //kollar så att samma film inte kan pushas in och visas flera gånger
       if (!randomMovies.some((movie) => movie.title === randomMovie.title)) {
-      randomMovies.push(randomMovie);
+        randomMovies.push(randomMovie);
       }
     }
     //uppdaterar state med de slumpade filmerna
@@ -46,15 +46,16 @@ export default function RecommendedMovies() {
 
   return (
     <div>
-      <h1 className="text-white text-center">Recommended for You</h1>
+      <h1 className="text-center text-white">Recommended for You</h1>
       <div>
         {recommendedMovies.map((movie) => (
           <Link href={`/movie/${movie.title}`} key={movie.title}>
             <div
-              className="bg-white bg-opacity-50 m-5 flex flex-col"
+              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+              className="m-5 flex flex-col bg-white bg-opacity-50"
               key={movie.title}
             >
-              <h3 className="text-center p-3">{movie.title}</h3>
+              <h3 className="p-3 text-center">{movie.title}</h3>
               <Image
                 src={movie.thumbnail}
                 height={100}
@@ -72,7 +73,7 @@ export default function RecommendedMovies() {
                 <div className="flex flex-row">
                   <p>{movie.rating}</p>
                   <p>
-                    <BookmarkIcon className="text-white h-7 w-7" />
+                    <BookmarkIcon className="size-7 text-white" />
                   </p>
                 </div>
               </div>

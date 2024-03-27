@@ -31,12 +31,13 @@ export default function Bookmarked() {
 
   return (
     <div>
-      <h1 className="text-white text-3xl text-center">Bookmarked movies</h1>
+      <h1 className="text-center text-3xl text-white">Bookmarked movies</h1>
 
       {bookmarkedMovies.length > 0 ? (
         bookmarkedMovies.map((movie) => (
           <React.Fragment key={movie.title}>
-            <div className="bg-white bg-opacity-50 m-5 flex flex-col">
+            {/* eslint-disable-next-line tailwindcss/migration-from-tailwind-2 */}
+            <div className="m-5 flex flex-col bg-white bg-opacity-50">
               <h2 className="text-white">{movie.title}</h2>
               <Image
                 src={movie.thumbnail}

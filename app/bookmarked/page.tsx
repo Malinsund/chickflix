@@ -30,28 +30,34 @@ export default function Bookmarked() {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-center text-3xl text-white">Bookmarked movies</h1>
-
+    <div className="text-center text-3xl text-white pt-8">
+      <h1>Bookmarked movies</h1>
       {bookmarkedMovies.length > 0 ? (
-        bookmarkedMovies.map((movie) => (
-          <React.Fragment key={movie.title}>
-            {/* eslint-disable-next-line tailwindcss/migration-from-tailwind-2 */}
-            <div className="m-5 flex flex-col bg-white bg-opacity-50">
-              <h2 className="text-white">{movie.title}</h2>
+        <div className="flex flex-wrap justify-center md:justify-start gap-4 p-4">
+          {bookmarkedMovies.map((movie) => (
+            <div
+              key={movie.title}
+              className="m-5 flex flex-col items-center bg-white bg-opacity-50 rounded shadow-lg overflow-hidden max-w-xs md:max-w-none  lg:w-1/4 xl:w-1/5"
+            >
               <Image
                 src={movie.thumbnail}
-                alt={"Thumbnail for ${movie.title}"}
-                width={100}
-                height={100}
+                alt={`Thumbnail for ${movie.title}`}
+                width={350}
+                height={500}
                 layout="fixed"
+                className="rounded"
               />
+              <h2 className="text-black text-lg font-semibold p-2">
+                {movie.title}
+              </h2>
               <Bookmark movieTitle={movie.title} />
             </div>
-          </React.Fragment>
-        ))
+          ))}
+        </div>
       ) : (
-        <p className="text-white">You have no bookmarked movies</p>
+        <div className="flex-grow flex justify-center items-center">
+          <p className="text-white mt-20">You have no bookmarked movies</p>
+        </div>
       )}
     </div>
   );

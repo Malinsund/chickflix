@@ -33,43 +33,48 @@ export default function Home() {
       </div>
       <h1 className="text-center text-white">Trending right now</h1>
 
-      <Link href={`/movie/${currentMovie.title}`} key={currentMovie.title}>
-        {/* eslint-disable-next-line tailwindcss/migration-from-tailwind-2 */}
-        <div className="mx-5 flex flex-col justify-center bg-white bg-opacity-50">
-          <h3 className="p-3 text-center">{currentMovie.title}</h3>
-          <Image
-            src={currentMovie.thumbnail}
-            height={100}
-            width={100}
-            alt={currentMovie.title}
-            style={{
-              height: "100%",
-              width: "auto",
-              paddingRight: "20px",
-              paddingLeft: "20px",
-            }}
-          />
-          <div className="flex flex-row justify-between p-5">
-            <p>{currentMovie.year}</p>
-            <div className="flex flex-row">
-              <p>{currentMovie.rating}</p>
-              <p>
-                <Bookmark movieTitle={currentMovie.title} />
-              </p>
-            </div>
-          </div>
-        </div>
-      </Link>
-
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row gap-2">
+        <div className="flex items-center justify-center"> 
         <ChevronDoubleLeftIcon
           onClick={previous}
-          className="size-14 cursor-pointer text-white hover:text-blue-400"
+          className="size-7 cursor-pointer text-white hover:text-blue-400"
         ></ChevronDoubleLeftIcon>
+        </div>
+        <div className="grow">
+        <Link href={`/movie/${currentMovie.title}`} key={currentMovie.title}>
+          {/* eslint-disable-next-line tailwindcss/migration-from-tailwind-2 */}
+          <div className="flex flex-col justify-center bg-white bg-opacity-50">
+            <h3 className="text-center">{currentMovie.title}</h3>
+            <Image
+              src={currentMovie.thumbnail}
+              height={100}
+              width={100}
+              alt={currentMovie.title}
+              style={{
+                height: "100%",
+                width: "auto",
+                paddingRight: "20px",
+                paddingLeft: "20px",
+              }}
+            />
+            <div className="flex flex-row justify-between p-5">
+              <p>{currentMovie.year}</p>
+              <div className="flex flex-row">
+                <p>{currentMovie.rating}</p>
+                <p>
+                  <Bookmark movieTitle={currentMovie.title} />
+                </p>
+              </div>
+            </div>
+          </div>
+        </Link>
+        </div>
+        <div className="flex items-center justify-center"> 
         <ChevronDoubleRightIcon
           onClick={next}
-          className="size-14 cursor-pointer text-white hover:text-blue-400"
+          className="size-7 cursor-pointer text-white hover:text-blue-400"
         ></ChevronDoubleRightIcon>
+        </div>
       </div>
       <RecommendedMovies />
     </div>

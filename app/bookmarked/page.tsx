@@ -56,7 +56,9 @@ export default function Bookmarked() {
         </div>
       ) : (
         <div className="flex-grow flex justify-center items-center">
-          <p className="text-white mt-20">You have no bookmarked movies</p>
+          <p className="text-white mt-20 text-lg">
+            You have no bookmarked movies
+          </p>
         </div>
       )}
     </div>

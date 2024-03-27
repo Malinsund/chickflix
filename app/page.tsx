@@ -23,45 +23,43 @@ export default function Home() {
   const previous = () => {
     setSlide(currentSlide === 0 ? length - 1 : currentSlide - 1);
   };
+
+  const currentMovie = filteredMovies[currentSlide];
+
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <div className="flex justify-center">
         <SearchBar />
       </div>
-
-      {filteredMovies.map((movie, index) => (
-        <Link href={`/movie/${movie.title}`} key={movie.title}>
-          <div
-            className={`${
-              index === currentSlide ? "block" : "hidden"
-            } mx-2 flex flex-col justify-center bg-white bg-opacity-50 m-5] `}
-            key={movie.title}
-          >
-            <h3 className="text-center p-3">{movie.title}</h3>
-            <Image
-              src={movie.thumbnail}
-              height={100}
-              width={100}
-              alt={movie.title}
-              style={{
-                height: "100%",
-                width: "auto",
-                paddingRight: "20px",
-                paddingLeft: "20px",
-              }}
-            ></Image>
-            <div className="flex flex-row justify-between p-5">
-              <p>{movie.year}</p>
-              <div className="flex flex-row">
-                <p>{movie.rating}</p>
-                <p>
-                  <Bookmark movieTitle={movie.title} />
-                </p>
-              </div>
+      <h1 className="text-white text-center">Trending right now</h1>
+    
+      <Link href={`/movie/${currentMovie.title}`} key={currentMovie.title}>
+        <div className="mx-5 flex flex-col justify-center bg-white bg-opacity-50">
+          <h3 className="text-center p-3">{currentMovie.title}</h3>
+          <Image
+            src={currentMovie.thumbnail}
+            height={100}
+            width={100}
+            alt={currentMovie.title}
+            style={{
+              height: "100%",
+              width: "auto",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+            }}
+          />
+          <div className="flex flex-row justify-between p-5">
+            <p>{currentMovie.year}</p>
+            <div className="flex flex-row">
+              <p>{currentMovie.rating}</p>
+              <p>
+                <Bookmark movieTitle={currentMovie.title} />
+              </p>
             </div>
           </div>
-        </Link>
-      ))}
+        </div>
+      </Link>
+     
       <div className="flex flex-row justify-between">
         <ChevronDoubleLeftIcon
           onClick={previous}

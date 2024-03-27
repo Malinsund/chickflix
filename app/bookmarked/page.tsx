@@ -19,14 +19,20 @@ export default function Bookmarked() {
   const [bookmarkedMovies, setBookmarkedMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
-    const bookmarkedTitles = JSON.parse(
-      localStorage.getItem("bookmarks") || "[]"
-    );
-
-    const bookmarked = movies.filter((movie) =>
-      bookmarkedTitles.includes(movie.title)
-    );
-    setBookmarkedMovies(bookmarked);
+    const handleBookmarkChange = () => {
+      const bookmarkedTitles = JSON.parse(
+        localStorage.getItem("bookmarks") || "[]"
+      );
+      const updatedBookmarkedMovies = movies.filter((movie) =>
+        bookmarkedTitles.includes(movie.title)
+      );
+      setBookmarkedMovies(updatedBookmarkedMovies);
+    };
+    handleBookmarkChange();
+    window.addEventListener("bookmarkChanged", handleBookmarkChange);
+    return () => {
+      window.removeEventListener("bookmarkChanged", handleBookmarkChange);
+    };
   }, []);
 
   return (

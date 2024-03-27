@@ -16,3 +16,8 @@
   white-space: nowrap;
   animation: roll 10s linear infinite;
 }
+
+.pacifico-text {
+  font-family: 'Pacifico', cursive;
+  
+}

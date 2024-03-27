@@ -77,7 +77,7 @@ export default function MoviePage({ params }: PageProps) {
             </div>
           </div>
           <hr className="my-3 bg-[#282525]" />
-          <p>{selectedMovie.synopsis}</p>
+          <p className="">{selectedMovie.synopsis}</p>
         </div>
 
         <div className="text-sm italic">

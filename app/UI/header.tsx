@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className="flex justify-between bg-[#282525] p-4">
       <Link href="/">
-        <h1 className="text-blue-400">Chick Flix</h1>
+        <h1 className=" text-blue-400 ">Chick Flix</h1>
       </Link>
 
       <Link href="/bookmarked">

@@ -1,6 +1,5 @@
 "use client";
 
-import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -20,19 +19,17 @@ interface Movie {
 }
 
 export default function RecommendedMovies() {
-  //state för att hålla rekommenderade filmer
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
+  const [opacity, setOpacity] = useState(1);
+  const [currentSlide, setSlide] = useState(0);
 
   //hämtar filmer som inte är trending och slumpar fram 5 filmer
   useEffect(() => {
-    //filtrerar ut filmer som inte är "trending"
     const notTrendingMovies = movies.filter((movie) => !movie.isTrending);
-    //tom array av typen Movie[] för att hålla de slumpade filmerna
+
     const randomMovies: Movie[] = [];
 
-    //slumpar fram 5 filmer och pushar in i arrayen randomMovies
     while (randomMovies.length < 5) {
-      //slumpar fram ett indexvärde
       const randomIndex = Math.floor(Math.random() * notTrendingMovies.length);
       //hämtar en slumpad film från arrayen med hjälp av randomIndex-värdet
       const randomMovie = notTrendingMovies[randomIndex];
@@ -44,6 +41,23 @@ export default function RecommendedMovies() {
     //uppdaterar state med de slumpade filmerna
     setRecommendedMovies(randomMovies);
   }, []);
+  const length = recommendedMovies.length;
+  const fadeDuration = 500;
+  const next = () => {
+    setOpacity(0);
+    setTimeout(() => {
+      setSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+      setOpacity(1);
+    }, fadeDuration);
+  };
+  const previous = () => {
+    setOpacity(0);
+    setTimeout(() => {
+      setSlide(currentSlide === 0 ? length - 1 : currentSlide - 1);
+      setOpacity(1);
+    }, fadeDuration);
+  };
+  const currentMovie = recommendedMovies[currentSlide];
 
   return (
     <div>

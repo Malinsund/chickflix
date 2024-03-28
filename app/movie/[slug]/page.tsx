@@ -43,51 +43,58 @@ export default function MoviePage({ params }: PageProps) {
       <p className="py-3 text-center text-xl font-bold">
         {selectedMovie.title}
       </p>
-      <Image
-        src={selectedMovie.thumbnail}
-        alt={`Thumbnail for ${selectedMovie.title}`}
-        height={100}
-        width={90}
-        style={{
-          height: "100%",
-          width: "auto",
-          borderRadius: "6px 6px 0px 0px",
-        }}
-      ></Image>
-      {selectedMovie.isTrending === true && (
-        <div className="overflow-hidden rounded-b-md bg-blue-300">
-          <p className="py-1 font-bold">
-            <span className="rolling-text">Trending right now!</span>
-          </p>
-        </div>
-      )}
-      <div className="flex flex-col gap-5 p-2">
-        <div>
-          <div className="flex flex-row justify-between">
-            <p className="flex items-center justify-center text-lg font-semibold">
-              {selectedMovie.year}
-            </p>
-            <div className="flex flex-row">
-              {selectedMovie.rating !== "Not Rated" && (
-                <p className="mr-1 flex size-7 items-center justify-center rounded-full bg-white  font-bold">
-                  {selectedMovie.rating}
-                </p>
-              )}
-              <Bookmark movieTitle={selectedMovie.title} />
+      <div className="flex flex-col md:flex-row md:items-start md:mb-10">
+        <div className="flex flex-col md:w-1/3">
+          <Image
+            src={selectedMovie.thumbnail}
+            alt={`Thumbnail for ${selectedMovie.title}`}
+            height={100}
+            width={90}
+            style={{
+              height: "100%",
+              width: "auto",
+              borderRadius: "6px 6px 0px 0px",
+            }}
+          ></Image>
+          {selectedMovie.isTrending === true && (
+            <div className="overflow-hidden rounded-b-md bg-blue-300">
+              <p className="py-1 font-bold">
+                <span className="rolling-text">Trending right now!</span>
+              </p>
             </div>
-          </div>
-          <hr className="my-3 bg-[#282525]" />
-          <p>{selectedMovie.synopsis}</p>
+          )}
         </div>
+        <div className="flex flex-col gap-5 p-2">
+          <div>
+            <div className="flex flex-row justify-between">
+              <p className="flex items-center justify-center text-lg font-semibold">
+                {selectedMovie.year}
+              </p>
+              <div className="flex flex-row">
+                {selectedMovie.rating !== "Not Rated" && (
+                  <p className="mr-1 flex size-7 items-center justify-center rounded-full bg-white  font-bold">
+                    {selectedMovie.rating}
+                  </p>
+                )}
+                <Bookmark movieTitle={selectedMovie.title} />
+              </div>
+            </div>
+            <hr className="my-3 bg-[#282525]" />
+            <p>{selectedMovie.synopsis}</p>
+          </div>
 
-        <div className="text-sm italic">
-          <p>
-            Genre: <span className="font-thin">{selectedMovie.genre}</span>
-          </p>
-          <p>
-            Starring:{" "}
-            <span className="font-thin">{selectedMovie.actors.join(", ")}</span>
-          </p>
+
+          <div className="text-sm italic">
+            <p>
+              Genre: <span className="font-thin">{selectedMovie.genre}</span>
+            </p>
+            <p>
+              Starring:{" "}
+              <span className="font-thin">
+                {selectedMovie.actors.join(", ")}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

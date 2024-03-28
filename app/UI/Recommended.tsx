@@ -1,5 +1,9 @@
 "use client";
 
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -60,41 +64,56 @@ export default function RecommendedMovies() {
   const currentMovie = recommendedMovies[currentSlide];
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <h1 className="text-center text-xl text-white">Recommended for You</h1>
-      <div>
-        {recommendedMovies.map((movie) => (
-          <Link href={`/movie/${movie.title}`} key={movie.title}>
+      <div className="flex flex-row gap-2">
+        {" "}
+        {/*md:hidden*/}
+        <div className="flex items-center justify-center">
+          <ChevronDoubleLeftIcon
+            onClick={previous}
+            className="size-7 cursor-pointer text-white hover:text-blue-400"
+          ></ChevronDoubleLeftIcon>
+        </div>
+        <div className="grow">
+          <Link href={`/movie/${currentMovie.title}`} key={currentMovie.title}>
             <div
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className="m-5 flex flex-col bg-white bg-opacity-50"
-              key={movie.title}
+              key={currentSlide}
+              /* eslint-disable-next-line tailwindcss/migration-from-tailwind-2, tailwindcss/no-custom-classname */
+              className="movie-thumbnail flex flex-col justify-center bg-white bg-opacity-50"
+              style={{ opacity: opacity }}
             >
-              <h3 className="p-3 text-center font-bold">{movie.title}</h3>
+              <h3 className="text-center font-bold">{currentMovie.title}</h3>
               <Image
-                src={movie.thumbnail}
+                src={currentMovie.thumbnail}
                 height={100}
                 width={100}
-                alt={movie.title}
+                alt={currentMovie.title}
                 style={{
                   height: "100%",
                   width: "auto",
                   paddingRight: "20px",
                   paddingLeft: "20px",
                 }}
-              ></Image>
-              <div className="flex flex-row justify-between p-5">
-                <p>{movie.year}</p>
+              />
+              <div className="flex flex-row justify-between px-7 py-5">
+                <p>{currentMovie.year}</p>
                 <div className="flex flex-row">
-                  <p>{movie.rating}</p>
+                  <p>{currentMovie.rating}</p>
                   <p>
-                    <Bookmark movieTitle={movie.title} />
+                    <Bookmark movieTitle={currentMovie.title} />
                   </p>
                 </div>
               </div>
             </div>
           </Link>
-        ))}
+        </div>
+        <div className="flex items-center justify-center">
+          <ChevronDoubleRightIcon
+            onClick={next}
+            className="size-7 cursor-pointer text-white hover:text-blue-400"
+          ></ChevronDoubleRightIcon>
+        </div>
       </div>
     </div>
   );

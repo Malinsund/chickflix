@@ -1,0 +1,22 @@
+name: Linting
+
+on:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+      - name: NPM Install
+        run: npm ci
+      - name: Run Linting
+        run: npm run lint
+      - name: Run Prettier
+        run: npm run prettier
+      - name: Run TypeScript checking
+        run: npx tsc

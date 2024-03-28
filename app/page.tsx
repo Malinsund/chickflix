@@ -1,5 +1,6 @@
 import RecommendedMovies from "./UI/Recommended";
-import TrendingMovies from "./UI/Trending";
+import TrendingMoviesBigScreen from "./UI/TrendingBigScreen";
+import TrendingMoviesMobile from "./UI/TrendingMobile";
 import SearchBar from "./UI/searchbar";
 import "./global.css";
 
@@ -10,9 +11,8 @@ export default function Home() {
       <div className="flex justify-center">
         <SearchBar />
       </div>
-      <h1 className="text-center text-white">Trending right now</h1>
-
-      <TrendingMovies />
+      <TrendingMoviesMobile />
+      <TrendingMoviesBigScreen />
       <RecommendedMovies />
     </div>
   );

@@ -7,7 +7,7 @@ import Bookmark from "./bookmark";
 import movies from "../../movies.json";
 import Image from "next/image";
 
-export default function TrendingMovies() {
+export default function TrendingMoviesMobile() {
     const [opacity, setOpacity] = useState(1);
   const [currentSlide, setSlide] = useState(0);
 
@@ -32,6 +32,8 @@ export default function TrendingMovies() {
   const currentMovie = filteredMovies[currentSlide];
 
     return (
+        <div className="flex flex-col gap-4">
+            <h1 className="text-center text-white">Trending right now</h1>
         <div className="flex flex-row gap-2 md:hidden">
         <div className="flex items-center justify-center">
           <ChevronDoubleLeftIcon
@@ -78,6 +80,7 @@ export default function TrendingMovies() {
             className="size-7 cursor-pointer text-white hover:text-blue-400"
           ></ChevronDoubleRightIcon>
         </div>
+      </div>
       </div>
     );
 }

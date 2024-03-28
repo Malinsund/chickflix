@@ -17,7 +17,12 @@
   animation: roll 10s linear infinite;
 }
 
+.movie-thumbnail {
+  transition: opacity 500ms ease-in-out;
+}
+
+
 .pacifico-text {
   font-family: 'Pacifico', cursive;
-  
 }
+

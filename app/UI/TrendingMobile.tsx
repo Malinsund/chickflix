@@ -62,7 +62,7 @@ export default function TrendingMoviesMobile() {
                   paddingLeft: "20px",
                 }}
               />
-              <div className="flex flex-row justify-between p-5">
+              <div className="flex flex-row justify-between px-7 py-5">
                 <p>{currentMovie.year}</p>
                 <div className="flex flex-row">
                   <p>{currentMovie.rating}</p>

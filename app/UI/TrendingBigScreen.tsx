@@ -31,7 +31,7 @@ export default function TrendingMoviesBigScreen() {
                 paddingLeft: "20px",
               }}
             ></Image>
-            <div className="flex flex-row justify-between p-5">
+            <div className="flex flex-row justify-between px-7 py-5">
               <p>{movie.year}</p>
               <div className="flex flex-row">
                 <p>{movie.rating}</p>

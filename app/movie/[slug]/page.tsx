@@ -83,7 +83,6 @@ export default function MoviePage({ params }: PageProps) {
             <p>{selectedMovie.synopsis}</p>
           </div>
 
-
           <div className="text-sm italic">
             <p>
               Genre: <span className="font-thin">{selectedMovie.genre}</span>

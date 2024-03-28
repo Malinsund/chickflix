@@ -43,20 +43,29 @@ export default function Bookmarked() {
           {bookmarkedMovies.map((movie) => (
             <div
               key={movie.title}
-              className="m-5 flex flex-col items-center bg-white bg-opacity-50 rounded shadow-lg overflow-hidden max-w-xs md:max-w-none  lg:w-1/4 xl:w-1/5"
+              className="m-5 flex flex-col items-center bg-white bg-opacity-50 rounded shadow-lg overflow-hidden max-w-xs md:max-w-none lg:w-1/4 xl:w-1/5"
             >
               <Image
                 src={movie.thumbnail}
                 alt={`Thumbnail for ${movie.title}`}
-                width={350}
-                height={500}
+                width={100}
+                height={100}
                 layout="fixed"
                 className="rounded"
-              />
-              <h2 className="text-black text-lg font-semibold p-2">
-                {movie.title}
-              </h2>
-              <Bookmark movieTitle={movie.title} />
+                style={{
+                  height: "100%",
+                  width: "400px",
+                  paddingRight: "30px",
+                  paddingLeft: "30px",
+                  paddingTop: "10px",
+                }}
+              ></Image>
+              <div className="flex flex-row justify-between p-5">
+                <h3 className="text-black text-lg font-bold">{movie.title}</h3>
+                <div className="pl-4">
+                  <Bookmark movieTitle={movie.title} />
+                </div>
+              </div>
             </div>
           ))}
         </div>

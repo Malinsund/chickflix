@@ -1,6 +1,9 @@
 "use client";
 
-import { BookmarkIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -20,19 +23,17 @@ interface Movie {
 }
 
 export default function RecommendedMovies() {
-  //state för att hålla rekommenderade filmer
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
+  const [opacity, setOpacity] = useState(1);
+  const [currentSlide, setSlide] = useState(0);
 
   //hämtar filmer som inte är trending och slumpar fram 5 filmer
   useEffect(() => {
-    //filtrerar ut filmer som inte är "trending"
     const notTrendingMovies = movies.filter((movie) => !movie.isTrending);
-    //tom array av typen Movie[] för att hålla de slumpade filmerna
+
     const randomMovies: Movie[] = [];
 
-    //slumpar fram 5 filmer och pushar in i arrayen randomMovies
     while (randomMovies.length < 5) {
-      //slumpar fram ett indexvärde
       const randomIndex = Math.floor(Math.random() * notTrendingMovies.length);
       //hämtar en slumpad film från arrayen med hjälp av randomIndex-värdet
       const randomMovie = notTrendingMovies[randomIndex];
@@ -44,43 +45,80 @@ export default function RecommendedMovies() {
     //uppdaterar state med de slumpade filmerna
     setRecommendedMovies(randomMovies);
   }, []);
+  const length = recommendedMovies.length;
+  const fadeDuration = 500;
+  const next = () => {
+    setOpacity(0);
+    setTimeout(() => {
+      setSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+      setOpacity(1);
+    }, fadeDuration);
+  };
+  const previous = () => {
+    setOpacity(0);
+    setTimeout(() => {
+      setSlide(currentSlide === 0 ? length - 1 : currentSlide - 1);
+      setOpacity(1);
+    }, fadeDuration);
+  };
+  const currentMovie = recommendedMovies[currentSlide];
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <h1 className="text-center text-xl text-white">Recommended for You</h1>
-      <div>
-        {recommendedMovies.map((movie) => (
-          <Link href={`/movie/${movie.title}`} key={movie.title}>
-            <div
-              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-              className="m-5 flex flex-col bg-white bg-opacity-50"
-              key={movie.title}
+      <div className="flex flex-row gap-2">
+        {" "}
+        {/*md:hidden*/}
+        <div className="flex items-center justify-center">
+          <ChevronDoubleLeftIcon
+            onClick={previous}
+            className="size-7 cursor-pointer text-white hover:text-blue-400"
+          ></ChevronDoubleLeftIcon>
+        </div>
+        {currentMovie && (
+          <div className="grow">
+            <Link
+              href={`/movie/${currentMovie.title}`}
+              key={currentMovie.title}
             >
-              <h3 className="p-3 text-center font-bold">{movie.title}</h3>
-              <Image
-                src={movie.thumbnail}
-                height={100}
-                width={100}
-                alt={movie.title}
-                style={{
-                  height: "100%",
-                  width: "auto",
-                  paddingRight: "20px",
-                  paddingLeft: "20px",
-                }}
-              ></Image>
-              <div className="flex flex-row justify-between p-5">
-                <p>{movie.year}</p>
-                <div className="flex flex-row">
-                  <p>{movie.rating}</p>
-                  <p>
-                    <Bookmark movieTitle={movie.title} />
-                  </p>
+              <div
+                key={currentSlide}
+                /* eslint-disable-next-line tailwindcss/migration-from-tailwind-2, tailwindcss/no-custom-classname */
+                className="movie-thumbnail flex flex-col justify-center bg-white bg-opacity-50"
+                style={{ opacity: opacity }}
+              >
+                <h3 className="text-center font-bold">{currentMovie.title}</h3>
+                <Image
+                  src={currentMovie.thumbnail}
+                  height={100}
+                  width={100}
+                  alt={currentMovie.title}
+                  style={{
+                    height: "100%",
+                    width: "auto",
+                    paddingRight: "20px",
+                    paddingLeft: "20px",
+                  }}
+                />
+                <div className="flex flex-row justify-between px-7 py-5">
+                  <p>{currentMovie.year}</p>
+                  <div className="flex flex-row">
+                    <p>{currentMovie.rating}</p>
+                    <p>
+                      <Bookmark movieTitle={currentMovie.title} />
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          </div>
+        )}
+        <div className="flex items-center justify-center">
+          <ChevronDoubleRightIcon
+            onClick={next}
+            className="size-7 cursor-pointer text-white hover:text-blue-400"
+          ></ChevronDoubleRightIcon>
+        </div>
       </div>
     </div>
   );

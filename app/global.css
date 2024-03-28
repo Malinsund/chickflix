@@ -21,8 +21,6 @@
   transition: opacity 500ms ease-in-out;
 }
 
-
 .pacifico-text {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
-

@@ -40,11 +40,11 @@ export default function MoviePage({ params }: PageProps) {
   return (
     // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
     <div className="m-5 flex flex-col rounded-md bg-white bg-opacity-50 px-2 text-black">
-      <p className="py-3 text-center text-xl font-bold">
+      <p className="py-3 text-center text-xl font-bold md:hidden">
         {selectedMovie.title}
       </p>
-      <div className="flex flex-col md:flex-row md:items-start md:mb-10">
-        <div className="flex flex-col md:w-1/3">
+      <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col px-2 py-6 md:w-1/3">
           <Image
             src={selectedMovie.thumbnail}
             alt={`Thumbnail for ${selectedMovie.title}`}
@@ -64,8 +64,9 @@ export default function MoviePage({ params }: PageProps) {
             </div>
           )}
         </div>
-        <div className="flex flex-col gap-5 p-2">
-          <div>
+        <div className="flex flex-col justify-between p-2">
+          <div className="grow">
+          <p className="py-3 text-center text-xl font-bold">{selectedMovie.title}</p>
             <div className="flex flex-row justify-between">
               <p className="flex items-center justify-center text-lg font-semibold">
                 {selectedMovie.year}
@@ -79,11 +80,15 @@ export default function MoviePage({ params }: PageProps) {
                 <Bookmark movieTitle={selectedMovie.title} />
               </div>
             </div>
+            <div className="flex flex-col gap-2">
+
             <hr className="my-3 bg-[#282525]" />
-            <p>{selectedMovie.synopsis}</p>
+            <p className="font-semibold">About:</p>
+            <p className="md:w-4/5">{selectedMovie.synopsis}</p>
+            </div>
           </div>
 
-          <div className="text-sm italic">
+          <div className="py-4 text-sm italic">
             <p>
               Genre: <span className="font-thin">{selectedMovie.genre}</span>
             </p>
@@ -94,8 +99,10 @@ export default function MoviePage({ params }: PageProps) {
               </span>
             </p>
           </div>
+
+          </div>
         </div>
       </div>
-    </div>
+
   );
 }

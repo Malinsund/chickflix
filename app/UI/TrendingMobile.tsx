@@ -69,9 +69,9 @@ export default function TrendingMoviesMobile() {
                   paddingLeft: "20px",
                 }}
               />
-              <div className="flex flex-row justify-between px-7 py-5">
+              <div className="flex flex-row items-center justify-between px-7 py-5">
                 <p>{currentMovie.year}</p>
-                <div className="flex flex-row">
+                <div className="flex flex-row items-center">
                   <p>{currentMovie.rating}</p>
                   <p>
                     <Bookmark movieTitle={currentMovie.title} />

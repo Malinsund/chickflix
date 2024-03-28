@@ -40,9 +40,9 @@ const Bookmark: React.FC<BookmarkProps> = ({ movieTitle }) => {
   };
 
   return (
-    <button onClick={toggleBookmark}>
+    <button className="flex" onClick={toggleBookmark}>
       {isBookmarked ? (
-        <SolidBookmarkIcon className="size-8 cursor-pointer text-blue-400" />
+        <SolidBookmarkIcon className="size-8 cursor-pointer text-blue-400 " />
       ) : (
         <OutlineBookmarkIcon className="size-8 cursor-pointer text-blue-400" />
       )}

@@ -75,7 +75,7 @@ export default function MoviePage({ params }: PageProps) {
               </p>
               <div className="flex flex-row">
                 {selectedMovie.rating !== "Not Rated" && (
-                  <p className="mr-1 flex size-7 items-center justify-center rounded-full bg-white  font-bold">
+                  <p className="mr-1 flex size-9 items-center justify-center rounded-full bg-white font-bold text-xs">
                     {selectedMovie.rating}
                   </p>
                 )}
@@ -89,7 +89,7 @@ export default function MoviePage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="py-4 text-sm italic">
+          <div className="py-4 text-sm italic font-semibold">
             <p>
               Genre: <span className="font-thin">{selectedMovie.genre}</span>
             </p>

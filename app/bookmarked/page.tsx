@@ -39,7 +39,7 @@ export default function Bookmarked() {
     <div className="pt-8 text-center text-3xl text-white">
       <h1>Bookmarked movies</h1>
       {bookmarkedMovies.length > 0 ? (
-        <div className="flex flex-wrap justify-center gap-4 p-4 md:justify-start">
+        <div className="flex flex-wrap justify-center gap-4 p-4 md:justify-center">
           {bookmarkedMovies.map((movie) => (
             <div
               key={movie.title}

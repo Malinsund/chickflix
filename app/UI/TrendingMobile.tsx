@@ -33,7 +33,7 @@ export default function TrendingMoviesMobile() {
 
     return (
         <div className="flex flex-col gap-4">
-            <h1 className="text-center text-white">Trending right now</h1>
+            <h1 className="text-center text-white text-xl">Trending right now</h1>
         <div className="flex flex-row gap-2 md:hidden">
         <div className="flex items-center justify-center">
           <ChevronDoubleLeftIcon
@@ -49,7 +49,7 @@ export default function TrendingMoviesMobile() {
               className="movie-thumbnail flex flex-col justify-center bg-white bg-opacity-50"
               style={{ opacity: opacity }}
             >
-              <h3 className="text-center">{currentMovie.title}</h3>
+              <h3 className="text-center font-bold">{currentMovie.title}</h3>
               <Image
                 src={currentMovie.thumbnail}
                 height={100}

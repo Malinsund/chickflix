@@ -7,6 +7,8 @@ interface BookmarkProps {
   movieTitle: string;
 }
 
+const Movie;
+
 const Bookmark: React.FC<BookmarkProps> = ({ movieTitle }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 

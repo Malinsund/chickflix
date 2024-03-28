@@ -22,15 +22,21 @@ const Bookmark: React.FC<BookmarkProps> = ({ movieTitle }) => {
     let bookmarkedMovies = JSON.parse(
       localStorage.getItem("bookmarks") || "[]"
     );
-    if (bookmarkedMovies.includes(movieTitle)) {
-      bookmarkedMovies = bookmarkedMovies.filter(
-        (title: string) => title !== movieTitle
-      );
+    const index = bookmarkedMovies.indexOf(movieTitle);
+
+    if (index !== -1) {
+      /* Tar bort */
+      bookmarkedMovies.splice(index, 1);
     } else {
+      /* Lägger till */
       bookmarkedMovies.push(movieTitle);
     }
     localStorage.setItem("bookmarks", JSON.stringify(bookmarkedMovies));
     setIsBookmarked(!isBookmarked);
+
+    window.dispatchEvent(
+      new CustomEvent("bookmarkChanged", { detail: movieTitle })
+    );
   };
 
   return (

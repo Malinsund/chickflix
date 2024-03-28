@@ -75,39 +75,44 @@ export default function RecommendedMovies() {
             className="size-7 cursor-pointer text-white hover:text-blue-400"
           ></ChevronDoubleLeftIcon>
         </div>
-        <div className="grow">
-          <Link href={`/movie/${currentMovie.title}`} key={currentMovie.title}>
-            <div
-              key={currentSlide}
-              /* eslint-disable-next-line tailwindcss/migration-from-tailwind-2, tailwindcss/no-custom-classname */
-              className="movie-thumbnail flex flex-col justify-center bg-white bg-opacity-50"
-              style={{ opacity: opacity }}
+        {currentMovie && (
+          <div className="grow">
+            <Link
+              href={`/movie/${currentMovie.title}`}
+              key={currentMovie.title}
             >
-              <h3 className="text-center font-bold">{currentMovie.title}</h3>
-              <Image
-                src={currentMovie.thumbnail}
-                height={100}
-                width={100}
-                alt={currentMovie.title}
-                style={{
-                  height: "100%",
-                  width: "auto",
-                  paddingRight: "20px",
-                  paddingLeft: "20px",
-                }}
-              />
-              <div className="flex flex-row justify-between px-7 py-5">
-                <p>{currentMovie.year}</p>
-                <div className="flex flex-row">
-                  <p>{currentMovie.rating}</p>
-                  <p>
-                    <Bookmark movieTitle={currentMovie.title} />
-                  </p>
+              <div
+                key={currentSlide}
+                /* eslint-disable-next-line tailwindcss/migration-from-tailwind-2, tailwindcss/no-custom-classname */
+                className="movie-thumbnail flex flex-col justify-center bg-white bg-opacity-50"
+                style={{ opacity: opacity }}
+              >
+                <h3 className="text-center font-bold">{currentMovie.title}</h3>
+                <Image
+                  src={currentMovie.thumbnail}
+                  height={100}
+                  width={100}
+                  alt={currentMovie.title}
+                  style={{
+                    height: "100%",
+                    width: "auto",
+                    paddingRight: "20px",
+                    paddingLeft: "20px",
+                  }}
+                />
+                <div className="flex flex-row justify-between px-7 py-5">
+                  <p>{currentMovie.year}</p>
+                  <div className="flex flex-row">
+                    <p>{currentMovie.rating}</p>
+                    <p>
+                      <Bookmark movieTitle={currentMovie.title} />
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        </div>
+            </Link>
+          </div>
+        )}
         <div className="flex items-center justify-center">
           <ChevronDoubleRightIcon
             onClick={next}

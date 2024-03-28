@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import movies from "../../movies.json";
 import Bookmark from "../UI/bookmark";
 
@@ -36,14 +36,15 @@ export default function Bookmarked() {
   }, []);
 
   return (
-    <div className="text-center text-3xl text-white pt-8">
+    <div className="pt-8 text-center text-3xl text-white">
       <h1>Bookmarked movies</h1>
       {bookmarkedMovies.length > 0 ? (
-        <div className="flex flex-wrap justify-center md:justify-start gap-4 p-4">
+        <div className="flex flex-wrap justify-center gap-4 p-4 md:justify-start">
           {bookmarkedMovies.map((movie) => (
             <div
               key={movie.title}
-              className="m-5 flex flex-col items-center bg-white bg-opacity-50 rounded shadow-lg overflow-hidden max-w-xs md:max-w-none lg:w-1/4 xl:w-1/5"
+              // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+              className="m-5 flex max-w-xs flex-col items-center overflow-hidden rounded bg-white bg-opacity-50 shadow-lg md:max-w-none lg:w-1/4 xl:w-1/5"
             >
               <Image
                 src={movie.thumbnail}
@@ -61,7 +62,7 @@ export default function Bookmarked() {
                 }}
               ></Image>
               <div className="flex flex-row justify-between p-5">
-                <h3 className="text-black text-lg font-bold">{movie.title}</h3>
+                <h3 className="text-lg font-bold text-black">{movie.title}</h3>
                 <div className="pl-4">
                   <Bookmark movieTitle={movie.title} />
                 </div>
@@ -70,8 +71,8 @@ export default function Bookmarked() {
           ))}
         </div>
       ) : (
-        <div className="flex-grow flex justify-center items-center">
-          <p className="text-white mt-20 text-lg">
+        <div className="flex grow items-center justify-center">
+          <p className="mt-20 text-lg text-white">
             You have no bookmarked movies
           </p>
         </div>

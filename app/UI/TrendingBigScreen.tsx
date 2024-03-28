@@ -1,9 +1,9 @@
 "use client"
 
-import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import movies from "../../movies.json";
+import Bookmark from "./bookmark";
 
 export default function TrendingMoviesBigScreen() { 
     const filteredMovies = movies.filter((movie) => movie.isTrending === true);
@@ -36,7 +36,7 @@ export default function TrendingMoviesBigScreen() {
               <div className="flex flex-row">
                 <p>{movie.rating}</p>
                 <p>
-                  <BookmarkIcon className="size-7 text-white" />
+                <Bookmark movieTitle={movie.title} />
                 </p>
               </div>
             </div>

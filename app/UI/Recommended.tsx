@@ -47,7 +47,7 @@ export default function RecommendedMovies() {
 
   return (
     <div>
-      <h1 className="text-center text-white text-xl">Recommended for You</h1>
+      <h1 className="text-center text-xl text-white">Recommended for You</h1>
       <div>
         {recommendedMovies.map((movie) => (
           <Link href={`/movie/${movie.title}`} key={movie.title}>

@@ -66,7 +66,9 @@ export default function MoviePage({ params }: PageProps) {
         </div>
         <div className="flex flex-col justify-between p-2">
           <div className="grow">
-          <p className="py-3 text-center text-xl font-bold">{selectedMovie.title}</p>
+            <p className="py-3 text-center text-xl font-bold">
+              {selectedMovie.title}
+            </p>
             <div className="flex flex-row justify-between">
               <p className="flex items-center justify-center text-lg font-semibold">
                 {selectedMovie.year}
@@ -81,10 +83,9 @@ export default function MoviePage({ params }: PageProps) {
               </div>
             </div>
             <div className="flex flex-col gap-2">
-
-            <hr className="my-3 bg-[#282525]" />
-            <p className="font-semibold">About:</p>
-            <p className="md:w-4/5">{selectedMovie.synopsis}</p>
+              <hr className="my-3 bg-[#282525]" />
+              <p className="font-semibold">About:</p>
+              <p className="md:w-4/5">{selectedMovie.synopsis}</p>
             </div>
           </div>
 
@@ -99,10 +100,8 @@ export default function MoviePage({ params }: PageProps) {
               </span>
             </p>
           </div>
-
-          </div>
         </div>
       </div>
-
+    </div>
   );
 }

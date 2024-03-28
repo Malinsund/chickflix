@@ -1,6 +1,9 @@
-"use client"
+"use client";
 
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useState } from "react";
 import Bookmark from "./bookmark";
@@ -8,7 +11,7 @@ import movies from "../../movies.json";
 import Image from "next/image";
 
 export default function TrendingMoviesMobile() {
-    const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(1);
   const [currentSlide, setSlide] = useState(0);
 
   const filteredMovies = movies.filter((movie) => movie.isTrending === true);
@@ -31,10 +34,10 @@ export default function TrendingMoviesMobile() {
 
   const currentMovie = filteredMovies[currentSlide];
 
-    return (
-        <div className="flex flex-col gap-4">
-            <h1 className="text-center text-xl text-white">Trending right now</h1>
-        <div className="flex flex-row gap-2 md:hidden">
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="text-center text-xl text-white">Trending right now</h1>
+      <div className="flex flex-row gap-2 md:hidden">
         <div className="flex items-center justify-center">
           <ChevronDoubleLeftIcon
             onClick={previous}
@@ -81,6 +84,6 @@ export default function TrendingMoviesMobile() {
           ></ChevronDoubleRightIcon>
         </div>
       </div>
-      </div>
-    );
+    </div>
+  );
 }

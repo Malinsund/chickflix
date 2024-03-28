@@ -4,11 +4,11 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Bookmark from "./bookmark";
 import movies from "../../movies.json";
-import Image from "next/image";
+import Bookmark from "./bookmark";
 
 export default function TrendingMoviesMobile() {
   const [opacity, setOpacity] = useState(1);
@@ -36,7 +36,11 @@ export default function TrendingMoviesMobile() {
 
   return (
     <div className="flex flex-col gap-4">
+     <div className="mx-12 flex items-center justify-center gap-2">
+      <hr className="h-0.5 grow bg-white text-white" />
       <h1 className="text-center text-xl text-white">Trending right now</h1>
+      <hr className="h-0.5 grow bg-white text-white" />
+      </div>
       <div className="flex flex-row gap-2 md:hidden">
         <div className="flex items-center justify-center">
           <ChevronDoubleLeftIcon

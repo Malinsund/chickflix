@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import movies from "../../movies.json";
+import Bookmark from "./bookmark";
 
 //interface för typen som ska användas i vårt state
 interface Movie {
@@ -73,7 +74,7 @@ export default function RecommendedMovies() {
                 <div className="flex flex-row">
                   <p>{movie.rating}</p>
                   <p>
-                    <BookmarkIcon className="size-7 text-white" />
+                    <Bookmark movieTitle={movie.title} />
                   </p>
                 </div>
               </div>

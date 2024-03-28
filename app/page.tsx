@@ -5,7 +5,6 @@ import SearchBar from "./UI/searchbar";
 import "./global.css";
 
 export default function Home() {
-
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-center">

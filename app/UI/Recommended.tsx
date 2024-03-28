@@ -47,7 +47,7 @@ export default function RecommendedMovies() {
 
   return (
     <div>
-      <h1 className="text-center text-white">Recommended for You</h1>
+      <h1 className="text-center text-xl text-white">Recommended for You</h1>
       <div>
         {recommendedMovies.map((movie) => (
           <Link href={`/movie/${movie.title}`} key={movie.title}>
@@ -56,7 +56,7 @@ export default function RecommendedMovies() {
               className="m-5 flex flex-col bg-white bg-opacity-50"
               key={movie.title}
             >
-              <h3 className="p-3 text-center">{movie.title}</h3>
+              <h3 className="p-3 text-center font-bold">{movie.title}</h3>
               <Image
                 src={movie.thumbnail}
                 height={100}

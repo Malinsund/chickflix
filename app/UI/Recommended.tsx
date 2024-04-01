@@ -72,8 +72,7 @@ export default function RecommendedMovies() {
       </div>
       <div className="flex flex-row gap-2">
         {" "}
-        {/*md:hidden*/}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center md:hidden">
           <ChevronDoubleLeftIcon
             onClick={previous}
             className="size-7 cursor-pointer text-white hover:text-blue-400"

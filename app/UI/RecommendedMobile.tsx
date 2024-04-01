@@ -22,7 +22,7 @@ interface Movie {
   isTrending?: boolean;
 }
 
-export default function RecommendedMovies() {
+export default function RecommendedMoviesMobile() {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
   const [opacity, setOpacity] = useState(1);
   const [currentSlide, setSlide] = useState(0);

@@ -39,7 +39,7 @@ export default function RecommendedBigScreen() {
   }, []);
 
   return (
-    <div className="hidden grid-cols-2 justify-center gap-7 sm:hidden md:grid lg:grid-cols-3">
+    <div className="m-6 hidden grid-cols-2 justify-center gap-7 sm:hidden md:grid lg:grid-cols-3">
       {recommendedMovies.map((movie) => (
         <Link href={`/movie/${movie.title}`} key={movie.title}>
           <div

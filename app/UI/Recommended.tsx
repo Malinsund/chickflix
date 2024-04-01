@@ -70,9 +70,9 @@ export default function RecommendedMovies() {
         <h1 className="text-center text-xl text-white">Recommended for You</h1>
         <hr className="h-0.5 grow bg-white text-white" />
       </div>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-2 md:hidden">
         {" "}
-        <div className="flex items-center justify-center md:hidden">
+        <div className="flex items-center justify-center">
           <ChevronDoubleLeftIcon
             onClick={previous}
             className="size-7 cursor-pointer text-white hover:text-blue-400"

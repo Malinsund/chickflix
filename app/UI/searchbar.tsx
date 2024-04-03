@@ -20,7 +20,7 @@ export default function SearchBar() {
 
   const featureFlag = (): boolean => {
     const flagValue = localStorage.getItem("feature");
-    return flagValue ? JSON.parse(flagValue) : true;
+    return flagValue ? JSON.parse(flagValue) : false;
   };
 
   const searchRef = useRef<HTMLDivElement>(null);

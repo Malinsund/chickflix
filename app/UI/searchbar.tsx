@@ -18,6 +18,18 @@ export default function SearchBar() {
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const [showResults, setShowResults] = useState(false);
 
+  const featureFlag = (): boolean => {
+    const flagValue = localStorage.getItem("feature");
+    return flagValue ? JSON.parse(flagValue) : true;
+  };
+
+  if (featureFlag()) {
+    console.log("Feature flag is enabled");
+  } else {
+    console.log("Feature flag is disabled");
+  }
+
+
   const searchRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

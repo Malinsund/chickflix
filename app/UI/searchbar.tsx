@@ -31,7 +31,10 @@ export default function SearchBar() {
 
     const filteredResults = movies.filter((movie: Movie) => {
       if (featureFlag()) {
-        return movie.title.toLowerCase().startsWith(term) || movie.genre.toLowerCase().includes(term);
+        return (
+          movie.title.toLowerCase().startsWith(term) ||
+          movie.genre.toLowerCase().includes(term)
+        );
       } else {
         return movie.title.toLowerCase().startsWith(term);
       }
@@ -39,7 +42,7 @@ export default function SearchBar() {
 
     setSearchResults(filteredResults);
     setShowResults(true);
-  }
+  };
 
   const handleClearSearch = () => {
     setSearchTerm("");

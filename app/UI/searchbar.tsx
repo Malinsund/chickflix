@@ -23,24 +23,23 @@ export default function SearchBar() {
     return flagValue ? JSON.parse(flagValue) : true;
   };
 
-  if (featureFlag()) {
-    console.log("Feature flag is enabled");
-  } else {
-    console.log("Feature flag is disabled");
-  }
-
-
   const searchRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const results = movies.filter((movie: Movie) =>
-      movie.title.toLowerCase().startsWith(term)
-    );
-    setSearchResults(results);
+
+    const filteredResults = movies.filter((movie: Movie) => {
+      if (featureFlag()) {
+        return movie.title.toLowerCase().startsWith(term) || movie.genre.toLowerCase().includes(term);
+      } else {
+        return movie.title.toLowerCase().startsWith(term);
+      }
+    });
+
+    setSearchResults(filteredResults);
     setShowResults(true);
-  };
+  }
 
   const handleClearSearch = () => {
     setSearchTerm("");
@@ -79,7 +78,7 @@ export default function SearchBar() {
           {searchResults.map((movie) => (
             <Link
               key={movie.title}
-              href={`/movie/${movie.title}`}
+              href={`/movie/${encodeURIComponent(movie.title.replaceAll(" ", "-").toLowerCase())}`}
               onClick={handleClearSearch}
             >
               <p>{movie.title}</p>

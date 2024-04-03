@@ -22,7 +22,7 @@ interface Movie {
   isTrending?: boolean;
 }
 
-export default function RecommendedMovies() {
+export default function RecommendedMoviesMobile() {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
   const [opacity, setOpacity] = useState(1);
   const [currentSlide, setSlide] = useState(0);
@@ -70,9 +70,8 @@ export default function RecommendedMovies() {
         <h1 className="text-center text-xl text-white">Recommended for You</h1>
         <hr className="h-0.5 grow bg-white text-white" />
       </div>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-2 md:hidden">
         {" "}
-        {/*md:hidden*/}
         <div className="flex items-center justify-center">
           <ChevronDoubleLeftIcon
             onClick={previous}

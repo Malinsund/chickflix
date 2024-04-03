@@ -1,4 +1,5 @@
-import RecommendedMovies from "./UI/Recommended";
+import RecommendedBigScreen from "./UI/RecommendedBigScreen";
+import RecommendedMoviesMobile from "./UI/RecommendedMobile";
 import TrendingMoviesBigScreen from "./UI/TrendingBigScreen";
 import TrendingMoviesMobile from "./UI/TrendingMobile";
 import SearchBar from "./UI/searchbar";
@@ -12,7 +13,8 @@ export default function Home() {
       </div>
       <TrendingMoviesMobile />
       <TrendingMoviesBigScreen />
-      <RecommendedMovies />
+      <RecommendedMoviesMobile />
+      <RecommendedBigScreen />
     </div>
   );
 }
